@@ -6,4 +6,6 @@ import santander_dev_week_2023.model.User;
 @Repository
 public interface UserRepository  extends JpaRepository<User, Long> {
 
+    boolean existisByAccontNumber(String accontNumber);
+
 }
