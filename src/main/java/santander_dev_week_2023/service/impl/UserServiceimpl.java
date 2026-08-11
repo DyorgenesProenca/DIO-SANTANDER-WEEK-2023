@@ -1,5 +1,6 @@
 package santander_dev_week_2023.service.impl;
 
+import org.jspecify.annotations.NonNull;
 import org.springframework.stereotype.Service;
 import santander_dev_week_2023.model.User;
 import santander_dev_week_2023.repository.UserRepository;
@@ -22,8 +23,8 @@ public class UserServiceimpl implements UserService {
         return userRepository.findById(id).orElseThrow(NoSuchElementException::new);
     }
     @Override
-    public User create(User userToCreate){
-        if (userRepository.existisByAccontNumber(userToCreate.getAccount().getNumber())){
+    public User create(@NonNull User userToCreate){
+        if (userRepository.existsByAccountNumber(userToCreate.getAccount().getNumber())){
             throw new IllegalArgumentException("This Account number already exists");
         }
         return userRepository.save(userToCreate);
