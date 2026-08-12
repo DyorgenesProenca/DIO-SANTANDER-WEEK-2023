@@ -1,6 +1,7 @@
 package santander_dev_week_2023.service.impl;
 
-import org.jspecify.annotations.NonNull;
+
+import org.springframework.lang.NonNull;
 import org.springframework.stereotype.Service;
 import santander_dev_week_2023.model.User;
 import santander_dev_week_2023.repository.UserRepository;
