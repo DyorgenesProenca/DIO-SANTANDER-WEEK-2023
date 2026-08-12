@@ -1,20 +1,41 @@
-# Santander Dev Week 2023 Java API
+# 🚀 Santander Dev Week 2023 - RESTful API
 
-RESTful API da Santander Dev Week 2023 construída em Java 17 com Spring Boot 3.
+API RESTful desenvolvida durante o bootcamp **Santander Dev Week 2023** em parceria com a **DIO (Digital Innovation One)**, projetada para simular os serviços backend de uma aplicação bancária digital moderna.
 
-## Principais Tecnologias
+---
 
-- **Java 17**: Utilizaremos a versão LTS mais recente do Java para tirar vantagem das últimas inovações que essa linguagem robusta e amplamente utilizada oferece;
-- **Spring Boot 3**: Trabalharemos com a mais nova versão do Spring Boot, que maximiza a produtividade do desenvolvedor por meio de sua poderosa premissa de autoconfiguração;
-- **Spring Data JPA**: Exploraremos como essa ferramenta pode simplificar nossa camada de acesso aos dados, facilitando a integração com bancos de dados SQL;
-- **OpenAPI (Swagger)**: Vamos criar uma documentação de API eficaz e fácil de entender usando a OpenAPI (Swagger), perfeitamente alinhada com a alta produtividade que o Spring Boot oferece;
-- **Railway**: Facilita o deploy e monitoramento de nossas soluções na nuvem, além de oferecer diversos bancos de dados como serviço e pipelines de CI/CD.
+## 📌 Visão Geral da Arquitetura e Engenharia
 
-## Diagrama de Classes (Domínio da API)
+A aplicação adota uma arquitetura em camadas focada em desacoplamento, legibilidade e facilidade de manutenção (**Clean Code** e princípios **SOLID**):
+
+- **Controller Layer:** Exposição dos endpoints REST e gestão das requisições HTTP.
+- **Service Layer:** Centralização das regras de negócio e validações do domínio.
+- **Repository Layer:** Abstração de persistência de dados com Spring Data JPA.
+- **Exception Handling:** Tratamento centralizado de exceções (`@RestControllerAdvice`) garantindo respostas HTTP padronizadas.
+
+---
+
+## 🛠️ Tecnologias e Dependências
+
+| Tecnologia | Finalidade |
+| :--- | :--- |
+| **Java 21 (LTS)** | Linguagem base da aplicação |
+| **Spring Boot 3.1.x** | Framework backend principal |
+| **Spring Data JPA** | ORM e facilidade de acesso a dados |
+| **PostgreSQL** | Banco de dados relacional para ambiente de **Produção** |
+| **H2 Database** | Banco de dados em memória para testes e desenvolvimento **Local** |
+| **SpringDoc OpenAPI / Swagger 2.1.0** | Documentação interativa e especificação da API |
+| **Maven** | Gerenciamento de dependências e build da aplicação |
+| **Railway** | Plataforma de hospedagem PaaS (Cloud e CI/CD) |
+
+---
+
+## 📐 Diagrama de Classes do Domínio
 
 ```mermaid
 classDiagram
     class User {
+        -Long id
         -String name
         -Account account
         -Feature[] features
@@ -23,23 +44,27 @@ classDiagram
     }
 
     class Account {
+        -Long id
         -String number
         -String agency
-        -Number balance
-        -Number limit
+        -BigDecimal balance
+        -BigDecimal limit
     }
 
     class Feature {
+        -Long id
         -String icon
         -String description
     }
 
     class Card {
+        -Long id
         -String number
-        -Number limit
+        -BigDecimal limit
     }
 
     class News {
+        -Long id
         -String icon
         -String description
     }
@@ -48,3 +73,10 @@ classDiagram
     User "1" *-- "N" Feature
     User "1" *-- "1" Card
     User "1" *-- "N" News
+```
+ # 👨‍💻 Desenvolvedor
+  Dyorgenes Proença
+
+GitHub: @DyorgenesProenca
+
+
